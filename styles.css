@@ -45,7 +45,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 92px;
+  scroll-padding-top: 116px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -149,25 +149,26 @@ h1, h2, h3, h4 { line-height: 1.12; font-weight: 700; letter-spacing: -0.01em; }
   gap: 1rem; min-height: 72px;
 }
 .brand { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 700; }
-.brand__logo {
-  width: 64px; height: 64px; border-radius: 50%;
-  object-fit: contain; background: oklch(0.995 0.006 90);
-  border: 2px solid var(--gold);
-  padding: 4px;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.4s var(--ease), box-shadow 0.3s ease;
-}
-.brand:hover .brand__logo { transform: scale(1.06); box-shadow: var(--shadow); }
-.brand:active .brand__logo { transform: scale(0.98); }
 .brand__mark {
   display: grid; place-items: center;
-  width: 64px; height: 64px; border-radius: 50%;
-  background: var(--dark); color: var(--gold);
-  font-family: var(--font-display); font-size: 1.55rem; line-height: 1;
-  border: 2px solid var(--gold);
+  width: 50px; height: 50px; border-radius: 14px;
+  background: var(--gold); color: var(--dark);
+  font-family: var(--font-display); font-size: 1.6rem; line-height: 1;
+  transition: transform 0.4s var(--ease);
 }
+.brand:hover .brand__mark { transform: scale(1.06) rotate(-3deg); }
+.brand:active .brand__mark { transform: scale(0.97); }
 .brand__text { font-size: 1.28rem; letter-spacing: -0.02em; }
 .brand__text span { color: var(--gold-deep); }
+
+/* desktop: centered two-row navbar — logo on top, menu row below */
+@media (min-width: 901px) {
+  .nav__inner {
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.5rem; min-height: 0; padding-block: 0.75rem;
+  }
+  .nav__links { justify-content: center; flex-wrap: wrap; }
+}
 
 .nav__links { display: flex; align-items: center; gap: 0.35rem; }
 .nav__links a {
@@ -344,13 +345,8 @@ a.info-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); b
 .cat__media { aspect-ratio: 4 / 3; }
 .cat:hover .cat__media img { transform: scale(1.06); }
 .cat__media img { transition: transform 0.7s var(--ease); }
-.cat__body { padding: 1.25rem 1.3rem 1.5rem; }
+.cat__body { padding: 1.25rem 1.3rem 1.5rem; text-align: center; }
 .cat__body h3 { font-size: 1.28rem; }
-.cat__body h3::before {
-  content: ""; display: inline-block; vertical-align: middle;
-  width: 26px; height: 3px; border-radius: 3px; background: var(--gold);
-  margin-inline-end: 0.55rem;
-}
 .cat__body p { color: var(--ink-soft); margin-top: 0.5rem; }
 
 /* ------------------------------------------------------------ testimonials */
@@ -596,6 +592,54 @@ a.info-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); b
 .skip:focus { top: 1rem; }
 .center { text-align: center; }
 .mt-lg { margin-top: clamp(2rem, 5vw, 3rem); }
+
+/* --------------------------------------------------------- about (קצת עלינו) */
+.about {
+  position: relative; overflow: hidden;
+  display: grid; align-items: center;
+  gap: clamp(1.4rem, 3vw, 2.6rem); grid-template-columns: 1fr;
+  background:
+    radial-gradient(120% 70% at 50% -10%, oklch(0.87 0.06 82 / 0.4), transparent 60%),
+    radial-gradient(90% 60% at 50% 110%, oklch(0.84 0.05 70 / 0.3), transparent 60%),
+    var(--cream);
+}
+@media (min-width: 980px) {
+  .about { grid-template-columns: minmax(220px, 1fr) minmax(0, 38rem) minmax(220px, 1fr); }
+}
+.about__copy { text-align: center; max-width: 42rem; margin-inline: auto; padding-block: clamp(0.5rem, 2vw, 1.5rem); }
+.about__copy .eyebrow { margin-bottom: 1rem; }
+.about__title {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(1.8rem, 4.4vw, 2.8rem); line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.about__text {
+  font-size: clamp(1.02rem, 1.5vw, 1.22rem); line-height: 1.9;
+  color: oklch(0.31 0.02 66);
+}
+.about__text b { color: var(--ink); font-weight: 700; }
+.about__copy .btn { margin-top: 1.8rem; }
+
+.about__wall { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.5rem, 1.3vw, 0.9rem); align-content: center; }
+.about__wall img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  background: #fff; border: 5px solid #fff; border-radius: 3px;
+  box-shadow: 0 14px 30px -14px oklch(0.34 0.04 66 / 0.55);
+  transition: transform 0.45s var(--ease), box-shadow 0.3s ease;
+}
+.about__wall--a img:nth-child(1) { transform: rotate(-6deg); }
+.about__wall--a img:nth-child(2) { transform: rotate(4deg);  margin-top: 1.6rem; }
+.about__wall--a img:nth-child(3) { transform: rotate(3deg);  margin-top: -0.4rem; }
+.about__wall--a img:nth-child(4) { transform: rotate(-4deg); }
+.about__wall--b img:nth-child(1) { transform: rotate(5deg); }
+.about__wall--b img:nth-child(2) { transform: rotate(-5deg); margin-top: 1.6rem; }
+.about__wall--b img:nth-child(3) { transform: rotate(-3deg); margin-top: -0.4rem; }
+.about__wall--b img:nth-child(4) { transform: rotate(4deg); }
+.about__wall img:hover { transform: scale(1.05) rotate(0deg); box-shadow: var(--shadow); z-index: 2; position: relative; }
+@media (max-width: 979px) {
+  .about__wall { grid-template-columns: repeat(4, 1fr); gap: 0.4rem; }
+  .about__wall img { aspect-ratio: 1; margin: 0 !important; transform: rotate(0) !important; border-width: 3px; }
+}
 
 /* ------------------------------------------------------- floating WhatsApp */
 .wa-float {
