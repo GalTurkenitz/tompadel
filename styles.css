@@ -565,54 +565,48 @@ a.info-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); b
 .mt-lg { margin-top: clamp(2rem, 5vw, 3rem); }
 
 /* --------------------------------------------------------- about (קצת עלינו) */
+/* same 3-column composition (photos | text | photos) on EVERY screen — just scaled */
 .about {
   position: relative; overflow: hidden;
   display: grid; align-items: center; justify-content: center;
-  gap: clamp(1.2rem, 3vw, 2.6rem); grid-template-columns: 1fr;
-  min-height: calc(100svh - 118px);
-  padding-block: clamp(1rem, 3vw, 2rem);
+  gap: clamp(0.5rem, 2vw, 2.4rem);
+  grid-template-columns: 1fr 1.5fr 1fr;
+  min-height: calc(100svh - 116px);
+  padding: clamp(1rem, 3vw, 2rem) clamp(0.5rem, 2.2vw, 2rem);
   background:
     radial-gradient(60% 55% at 50% 50%, oklch(0.985 0.008 88) 0%, transparent 70%),
     radial-gradient(120% 70% at 50% -10%, oklch(0.87 0.06 82 / 0.35), transparent 60%),
     var(--cream);
 }
-@media (min-width: 980px) {
-  .about { grid-template-columns: minmax(240px, 1fr) minmax(0, 34rem) minmax(240px, 1fr); }
-}
-.about__copy { text-align: center; max-width: 40rem; margin-inline: auto; align-self: center; padding-block: clamp(0.5rem, 2vw, 1.5rem); }
-.about__copy .eyebrow { margin-bottom: 1rem; }
+.about__copy { text-align: center; max-width: 40rem; margin-inline: auto; align-self: center; padding-block: clamp(0.4rem, 2vw, 1.5rem); }
+.about__copy .eyebrow { margin-bottom: clamp(0.5rem, 2vw, 1rem); }
 .about__title {
   font-family: var(--font-display); font-weight: 400;
-  font-size: clamp(1.9rem, 4.6vw, 3rem); line-height: 1.1; margin-bottom: 1rem;
+  font-size: clamp(1.25rem, 4.4vw, 3rem); line-height: 1.1; margin-bottom: clamp(0.5rem, 2vw, 1rem);
 }
 .about__text {
-  font-size: clamp(1.04rem, 1.5vw, 1.24rem); line-height: 1.9;
+  font-size: clamp(0.8rem, 2.3vw, 1.24rem); line-height: 1.75;
   color: oklch(0.3 0.02 66);
 }
 .about__text b { color: var(--ink); font-weight: 700; }
-.about__copy .btn { margin-top: 1.8rem; }
+.about__copy .btn { margin-top: clamp(1rem, 3vw, 1.8rem); }
 
-/* side photo walls — every photo fully visible, framed & tilted */
+/* side photo walls — every photo fully visible, framed & tilted, both sides */
 .about__wall {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(0.55rem, 1.2vw, 0.95rem); align-content: center;
+  gap: clamp(0.3rem, 1vw, 0.95rem); align-content: center;
 }
 .about__wall img {
   width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
-  background: #fff; border: 5px solid #fff; border-radius: 4px;
+  background: #fff; border: clamp(2px, 0.6vw, 5px) solid #fff; border-radius: 4px;
   box-shadow: 0 12px 26px -14px oklch(0.34 0.04 66 / 0.5);
   transition: transform 0.45s var(--ease), box-shadow 0.3s ease;
 }
 /* scalable scattered tilt for any number of photos */
 .about__wall img:nth-child(3n+1) { transform: rotate(-5deg); }
-.about__wall img:nth-child(3n+2) { transform: rotate(4deg); margin-top: 1rem; }
-.about__wall img:nth-child(3n+3) { transform: rotate(-3deg); margin-top: -0.3rem; }
+.about__wall img:nth-child(3n+2) { transform: rotate(4deg); margin-top: clamp(0.3rem, 1.5vw, 1rem); }
+.about__wall img:nth-child(3n+3) { transform: rotate(-3deg); margin-top: clamp(-0.3rem, -0.6vw, -0.15rem); }
 .about__wall img:hover { transform: scale(1.06) rotate(0deg); box-shadow: var(--shadow); z-index: 2; position: relative; }
-@media (max-width: 979px) {
-  .about__copy { order: -1; }
-  .about__wall { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-  .about__wall img { transform: rotate(0) !important; margin: 0 !important; border-width: 4px; }
-}
 
 /* ------------------------------------------------------- floating WhatsApp */
 .wa-float {
