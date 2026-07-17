@@ -736,6 +736,9 @@ a.info-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); b
 .nav--dark .nav__links a:hover { background: oklch(0.825 0.128 84 / 0.16); color: oklch(0.86 0.128 86); }
 .nav--dark .nav__links a.is-active { color: oklch(0.85 0.128 85); }
 .nav--dark .brand__mark { background: var(--gold); color: oklch(0.2 0.02 74); }
+/* TTP gold-pill CTA keeps dark text on the gold, even on the dark navbar */
+.nav--dark .nav__links a.btn { color: var(--btn-fg); }
+.nav--dark .nav__links a.btn:hover { background: oklch(0.87 0.128 86); color: var(--btn-fg); }
 .ttp-wrap { width: min(1180px, 100% - (var(--gutter) * 2)); margin-inline: auto; }
 .ttp-section { padding-block: clamp(3rem, 8vw, 6rem); }
 .ttp-section--panel { background: var(--ttp-bg-2); }
