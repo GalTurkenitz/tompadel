@@ -554,42 +554,66 @@ a.info-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); b
 /* --- החבילה המובילה --- */
 .join-card {
   position: relative;
-  margin-top: 1.8rem;                        /* מקום לחותמת שגולשת מעל הכרטיס */
+  margin-top: 2.4rem;                        /* מקום למדליה שגולשת מעל הכרטיס */
   background:
+    /* אבק זהב מרוכז בפינה התחתונה־שמאלית, כמו בעיצוב הייחוס */
+    radial-gradient(1.4px 1.4px at 9% 92%,  oklch(0.88 0.11 86 / 0.85), transparent 100%),
+    radial-gradient(1px 1px   at 15% 84%,  oklch(0.88 0.11 86 / 0.65), transparent 100%),
+    radial-gradient(1.6px 1.6px at 21% 94%, oklch(0.88 0.11 86 / 0.75), transparent 100%),
+    radial-gradient(1px 1px   at 6% 78%,   oklch(0.88 0.11 86 / 0.5),  transparent 100%),
+    radial-gradient(1.2px 1.2px at 27% 86%, oklch(0.88 0.11 86 / 0.6),  transparent 100%),
+    radial-gradient(1px 1px   at 12% 70%,  oklch(0.88 0.11 86 / 0.42), transparent 100%),
+    radial-gradient(1.5px 1.5px at 33% 95%, oklch(0.88 0.11 86 / 0.55), transparent 100%),
+    radial-gradient(1px 1px   at 24% 76%,  oklch(0.88 0.11 86 / 0.38), transparent 100%),
+    radial-gradient(1.3px 1.3px at 40% 90%, oklch(0.88 0.11 86 / 0.45), transparent 100%),
+    radial-gradient(1px 1px   at 4% 88%,   oklch(0.88 0.11 86 / 0.5),  transparent 100%),
+    radial-gradient(1.2px 1.2px at 18% 66%, oklch(0.88 0.11 86 / 0.3),  transparent 100%),
+    radial-gradient(1px 1px   at 47% 96%,  oklch(0.88 0.11 86 / 0.35), transparent 100%),
+    radial-gradient(55% 65% at 12% 96%, oklch(0.62 0.09 70 / 0.28), transparent 72%),
     radial-gradient(130% 140% at 80% 0%, oklch(0.30 0.025 74) 0%, transparent 62%),
     var(--dark);
   color: var(--white);
-  border-radius: var(--r-xl);
+  border-radius: 26px;
   padding: clamp(1.7rem, 4.6vw, 2.4rem) clamp(1.4rem, 4vw, 2.6rem) clamp(1.8rem, 4vw, 2.4rem);
-  box-shadow: var(--shadow-lg);
+  box-shadow:
+    var(--shadow-lg),
+    0 0 34px -12px oklch(0.75 0.12 80 / 0.55);        /* זוהר זהב מסביב */
 }
-.join-card::before {           /* מסגרת זהב מוארת */
-  content: ""; position: absolute; inset: 0; border-radius: inherit;
-  padding: 3px; pointer-events: none;
-  background: linear-gradient(150deg, oklch(0.86 0.12 86), var(--gold-2) 40%, oklch(0.55 0.09 66) 70%, var(--gold));
+.join-card::before {           /* מסגרת זהב עבה ומוארת */
+  content: ""; position: absolute; inset: -4px; border-radius: 30px;
+  padding: 4px; pointer-events: none; z-index: 1;
+  background: linear-gradient(150deg, oklch(0.90 0.10 88), var(--gold) 28%, oklch(0.52 0.08 64) 58%, oklch(0.88 0.11 86) 82%, var(--gold-2));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
-.join-card__seal {              /* מדליית זהב עגולה בפינה */
-  position: absolute; z-index: 2;
-  inset-inline-start: clamp(0.9rem, 3.5vw, 2rem); top: clamp(-1.9rem, -5vw, -1.4rem);
-  width: clamp(5rem, 15vw, 5.9rem); aspect-ratio: 1; border-radius: 50%;
+.join-card__seal {              /* מדליית זהב משוננת בפינה */
+  position: absolute; z-index: 3;
+  inset-inline-start: clamp(0.8rem, 3vw, 1.8rem); top: clamp(-2.6rem, -7vw, -2rem);
+  width: clamp(5.4rem, 16vw, 6.4rem); aspect-ratio: 1; border-radius: 50%;
   display: grid; place-content: center; text-align: center; line-height: 1.2;
+  /* שוליים משוננים */
+  background: repeating-conic-gradient(from 0deg,
+    oklch(0.89 0.115 88) 0deg 5deg, oklch(0.67 0.11 70) 5deg 10deg);
+  color: oklch(0.24 0.03 66);
+  filter: drop-shadow(0 10px 18px oklch(0.3 0.05 70 / 0.7));
+}
+.join-card__seal::before {      /* דיסקית הזהב הפנימית */
+  content: ""; position: absolute; inset: 11%; border-radius: 50%;
   background:
-    radial-gradient(circle at 32% 28%, oklch(0.93 0.09 90), transparent 55%),
-    linear-gradient(145deg, oklch(0.85 0.125 86), var(--gold-2) 60%, oklch(0.62 0.10 68));
-  color: oklch(0.22 0.02 66);
-  box-shadow: 0 10px 22px -10px oklch(0.3 0.05 70 / 0.75), 0 0 0 1px oklch(0.55 0.09 66 / 0.6);
+    radial-gradient(circle at 32% 26%, oklch(0.95 0.07 92), transparent 58%),
+    linear-gradient(145deg, oklch(0.87 0.12 87), var(--gold-2) 55%, oklch(0.64 0.10 68));
+  box-shadow: inset 0 0 0 1.5px oklch(0.58 0.09 66 / 0.75);
 }
 .join-card__seal b,
 .join-card__seal i {
+  position: relative; z-index: 1;
   display: block; font-style: normal; font-weight: 800;
-  font-size: clamp(0.72rem, 2.2vw, 0.8rem);
+  font-size: clamp(0.7rem, 2.1vw, 0.78rem);
 }
 .join-card__title {
   font-family: var(--font-display); font-weight: 400;
   font-size: clamp(1.75rem, 6vw, 2.6rem); color: var(--white);
-  padding-inline-start: clamp(5.6rem, 17vw, 6.8rem);   /* מפנה מקום למדליה */
+  padding-inline-start: clamp(4.4rem, 14vw, 5.4rem);   /* מפנה מקום למדליה */
   min-height: 2.6rem;
 }
 .join-card__amt {
