@@ -104,9 +104,17 @@
         return;
       }
 
-      // TODO: חברו כאן שירות שליחה (למשל Formspree / EmailJS / endpoint משלכם)
-      // fetch("https://your-endpoint", { method: "POST", body: new FormData(form) })
-      if (status) { status.textContent = "תודה! פנייתכם נשלחה, נחזור אליכם בהקדם. 🎾"; status.classList.add("ok"); }
+      // No backend on this static site — compose the details into a WhatsApp
+      // message to the club and open it, so the lead reaches the client directly.
+      const name = form.querySelector("#name")?.value.trim() || "";
+      const phone = form.querySelector("#phone")?.value.trim() || "";
+      const message = form.querySelector("#message")?.value.trim() || "";
+      const text = encodeURIComponent(
+        `פנייה חדשה מהאתר 🎾\nשם: ${name}\nטלפון: ${phone}\nהודעה: ${message}`
+      );
+      window.open(`https://api.whatsapp.com/send?phone=972549459332&text=${text}`, "_blank");
+
+      if (status) { status.textContent = "תודה! נפתח עבורכם וואטסאפ עם הפרטים — רק ללחוץ שליחה. 🎾"; status.classList.add("ok"); }
       form.reset();
     });
   }
