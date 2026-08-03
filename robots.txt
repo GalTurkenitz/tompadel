@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tompadel.co.il/sitemap.xml
+Sitemap: https://tom-padel.com/sitemap.xml
