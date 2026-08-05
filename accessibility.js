@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  var BUSINESS = 'טומפדל';
+  var BUSINESS = 'Tompadel';
   var PHONE = '054-945-9332';
   var EMAIL = 'webforyoutwo@gmail.com';
 
